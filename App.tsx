@@ -27,6 +27,7 @@ import {
 
 import SvgComponent from './assets/svg/circle.svg';
 import Rect from './assets/svg/rect.svg';
+import BackgroundGradient from './assets/svg/gradient.svg';
 import Svg, {Circle} from 'react-native-svg';
 
 type SectionProps = PropsWithChildren<{
@@ -65,11 +66,23 @@ function App(): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+    backgroundColor: 'transparent',
   };
 
   return (
     <SafeAreaView style={backgroundStyle}>
+      <View
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          height: '100%',
+          zIndex: -1,
+        }}>
+        <BackgroundGradient />
+      </View>
       <StatusBar
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
         backgroundColor={backgroundStyle.backgroundColor}
@@ -77,10 +90,9 @@ function App(): React.JSX.Element {
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
         style={backgroundStyle}>
-        <Header />
         <View
           style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
+            backgroundColor: 'transparent',
           }}>
           <Section title="Step One">
             Edit <Text style={styles.highlight}>App.tsx</Text> to change this
@@ -117,7 +129,9 @@ function App(): React.JSX.Element {
             <Rect />
           </View>
         </View>
-        <LearnMoreLinks />
+        <View style={{backgroundColor: 'white'}}>
+          <LearnMoreLinks />
+        </View>
       </ScrollView>
     </SafeAreaView>
   );
