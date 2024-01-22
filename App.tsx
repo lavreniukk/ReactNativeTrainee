@@ -25,6 +25,10 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
+import SvgComponent from './assets/svg/circle.svg';
+import Rect from './assets/svg/rect.svg';
+import Svg, {Circle} from 'react-native-svg';
+
 type SectionProps = PropsWithChildren<{
   title: string;
 }>;
@@ -39,6 +43,7 @@ function Section({children, title}: SectionProps): React.JSX.Element {
           {
             color: isDarkMode ? Colors.white : Colors.black,
           },
+          styles.textHeaderFont,
         ]}>
         {title}
       </Text>
@@ -48,6 +53,7 @@ function Section({children, title}: SectionProps): React.JSX.Element {
           {
             color: isDarkMode ? Colors.light : Colors.dark,
           },
+          styles.textMainFont,
         ]}>
         {children}
       </Text>
@@ -89,8 +95,29 @@ function App(): React.JSX.Element {
           <Section title="Learn More">
             Read the docs to discover what to do next:
           </Section>
-          <LearnMoreLinks />
+          <Text>HELLO</Text>
+          <View
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}>
+            <Svg width={'100px'} height={'100px'}>
+              <Circle
+                cx="50"
+                cy="50"
+                r="45"
+                stroke="blue"
+                strokeWidth="2.5"
+                fill="red"
+              />
+            </Svg>
+            <SvgComponent />
+            <Rect />
+          </View>
         </View>
+        <LearnMoreLinks />
       </ScrollView>
     </SafeAreaView>
   );
@@ -112,6 +139,13 @@ const styles = StyleSheet.create({
   },
   highlight: {
     fontWeight: '700',
+  },
+  textHeaderFont: {
+    fontFamily: 'PlayfairDisplay-ExtraBold',
+    color: '#160F24',
+  },
+  textMainFont: {
+    fontFamily: 'Montserrat-Regular',
   },
 });
 
