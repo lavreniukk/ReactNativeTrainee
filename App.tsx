@@ -20,7 +20,6 @@ import {
 import {
   Colors,
   DebugInstructions,
-  Header,
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
@@ -29,6 +28,7 @@ import SvgComponent from './assets/svg/circle.svg';
 import Rect from './assets/svg/rect.svg';
 import BackgroundGradient from './assets/svg/gradient.svg';
 import Svg, {Circle} from 'react-native-svg';
+import GradientText from './src/GradientText/GradientText';
 
 type SectionProps = PropsWithChildren<{
   title: string;
@@ -107,7 +107,6 @@ function App(): React.JSX.Element {
           <Section title="Learn More">
             Read the docs to discover what to do next:
           </Section>
-          <Text>HELLO</Text>
           <View
             style={{
               display: 'flex',
@@ -130,6 +129,9 @@ function App(): React.JSX.Element {
           </View>
         </View>
         <View style={{backgroundColor: 'white'}}>
+          <GradientText gradient={<BackgroundGradient/>}>
+            Gradient text
+          </GradientText>
           <LearnMoreLinks />
         </View>
       </ScrollView>
